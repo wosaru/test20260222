@@ -10,37 +10,36 @@ body {
   font-size: 15px;
 }
 
-/* ===== 背景ボックス #filters ===== */
+/* ===== フィルター全体 ===== */
 #filters {
-  max-width: 920px;            /* 最大横幅固定 */
-  width: 100%;                 
-  background: #e6e7ed;         
-  padding: 6px 6px 4px 6px;    /* 上 6px / 右 6px / 下 4px / 左 6px */
+  max-width: 960px;          /* 最大横幅960px */
+  width: 100%;               /* ウィンドウが狭い時は100%に対応 */
+  background: #e6e7ed;
+  padding: 6px 6px 4px 6px;
   border: 1px solid #999;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
   box-sizing: border-box;
-  margin: 0 auto 8px auto;     /* 下マージンも控えめに */
+  margin: 0 auto 8px auto;
 }
 
-/* ===== 各条件グループ ===== */
+/* 条件グループ */
 .filter-group {
-  margin: 0 0 4px 0;            /* 下マージン4pxだけ */
-  padding: 4px 6px;             /* 内側余白もコンパクトに */
+  margin: 0 0 4px 0;
+  padding: 4px 6px;
   border: 1px solid #999;
   border-radius: 6px;
-  background: #fafbfc;
+  background: #d8f0ff;
 }
 
-/* ===== ラベル ===== */
+/* ラベル */
 .filter-group label,
 .filter-group span {
   display: block;
   font-weight: 600;
   font-size: 0.9rem;
   margin: 0 0 2px 0;            /* 下マージン2pxだけ */
-  padding: 2px 4px;             /* 文字周りの余白を小さく */
-  background-color: #d8f0ff;    /* 薄水色ボックス */
+  padding: 2px 4px;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
@@ -50,18 +49,13 @@ body {
 input,
 select,
 button {
-  font-size: 1rem;              /* 見やすさを維持 */
-  padding: 6px 6px;             /* 内側余白を少し小さく */
+  font-size: 1.3rem;
+  padding: 6px 6px;
   border-radius: 6px;
   border: 1px solid #999;
   width: 100%;
   box-sizing: border-box;
   background-color: #ffffff;
-}
-
-/* ===== 最後のグループの下マージンを消す ===== */
-#filters > .filter-group:last-child {
-  margin-bottom: 0;
 }
 
 }
@@ -95,7 +89,7 @@ button:hover {
   align-items: flex-start;
 }
 
-/* ★オリジナルサイズ表示 */
+/* オリジナルサイズ表示 */
 #gallery img {
   width: auto;
   height: auto;
@@ -133,22 +127,3 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
