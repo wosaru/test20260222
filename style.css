@@ -12,23 +12,21 @@ body {
 
 /* ===== フィルター全体 ===== */
 #filters {
-  max-width: 1000px;          /* 最大横幅960px */
-  width: 100%;               /* ウィンドウが狭い時は100%に対応 */
+  max-width: 1000px; 
+  width: 100%;  
   background: #e6e7ed;
-  padding: 6px 6px 4px 6px;
+  padding: 8px;
   border: 1px solid #999;
   border-radius: 8px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.08);
-  box-sizing: border-box;
-  margin: 0 auto 8px auto;
 }
 
 /* 条件グループ */
 .filter-group {
-  margin: 0 0 4px 0;
-  padding: 4px 6px;
+  margin-bottom: 4px;
+  padding: 6px 8px;
   border: 1px solid #999;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #d8f0ff;
 }
 
@@ -38,11 +36,7 @@ body {
   display: block;
   font-weight: 600;
   font-size: 0.9rem;
-  margin: 0 0 2px 0;            /* 下マージン2pxだけ */
-  padding: 2px 4px;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
+  margin-bottom: 4px;
 }
 
 /* ===== 入力フォーム ===== */
@@ -50,7 +44,7 @@ input,
 select,
 button {
   font-size: 1.3rem;
-  padding: 6px 6px;
+  padding: 6px 8px;
   border-radius: 6px;
   border: 1px solid #999;
   width: 100%;
@@ -74,7 +68,7 @@ button {
   border: none;
   cursor: pointer;
   font-weight: 600;
-  padding: 7px 10px;
+  padding: 6px 8px;
 }
 
 button:hover {
@@ -127,4 +121,3 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
-
