@@ -12,7 +12,7 @@ body {
 
 /* ===== フィルター全体 ===== */
 #filters {
-  max-width: 960px;          /* 最大横幅960px */
+  max-width: 1000px;          /* 最大横幅960px */
   width: 100%;               /* ウィンドウが狭い時は100%に対応 */
   background: #e6e7ed;
   padding: 6px 6px 4px 6px;
@@ -127,3 +127,4 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
