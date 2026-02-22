@@ -12,8 +12,8 @@ body {
 
 /* ===== フィルター全体 ===== */
 #filters {
-  width: 100%;
   max-width: 960px;
+  width: 100%;
   background: #e6e7ed;
   padding: 8px;
   border: 1px solid #999;
@@ -121,6 +121,7 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
 
