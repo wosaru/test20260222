@@ -23,7 +23,7 @@ body {
 .filter-group {
   margin-bottom: 10px;
   padding: 8px 10px;
-  border: 1px solid #e3e6ea;
+  border: 1px solid #999;
   border-radius: 8px;
   background: #d8f0ff;
 }
@@ -44,7 +44,7 @@ button {
   font-size: 1.2rem;
   padding: 8px 10px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #999;
   width: 100%;
   box-sizing: border-box;
   background-color: #ffffff;
@@ -118,6 +118,7 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
 
