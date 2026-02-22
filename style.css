@@ -36,6 +36,8 @@ body {
   font-size: 0.9rem;
   margin-bottom: 4px;
   background-color: #d8f0ff;  /* 薄い水色 */
+  padding: 4px 8px;           /* ラベル内に余白 */
+  border-radius: 6px;         /* 角丸で柔らかい印象 */
 }
 
 /* ===== 入力フォーム（小さめ） ===== */
@@ -118,4 +120,5 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
