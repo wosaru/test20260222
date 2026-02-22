@@ -25,7 +25,7 @@ body {
   padding: 8px 10px;
   border: 1px solid #e3e6ea;
   border-radius: 8px;
-  background: #fafbfc;
+  background: #d8f0ff;
 }
 
 /* ラベル */
@@ -35,11 +35,6 @@ body {
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 4px;
-  background-color: #d8f0ff;   /* 薄水色 */
-  padding: 6px 10px;           /* ボックス全体に余白 */
-  border-radius: 6px;          /* 角丸 */
-  width: 100%;                 /* 横幅いっぱいに広げる */
-  box-sizing: border-box;      /* padding含めて幅制御 */
 }
 
 /* ===== 入力フォーム（小さめ） ===== */
@@ -47,7 +42,7 @@ input,
 select,
 button {
   font-size: 0.9rem;
-  padding: 6px 8px;
+  padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
   width: 100%;
@@ -122,6 +117,7 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
 
