@@ -1,26 +1,118 @@
+/* ===== 基本設定 ===== */
 body {
-  font-family: sans-serif;
-  margin: 20px;
+  font-family: -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 16px;
+  background: #f5f7fa;
+  color: #222;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
+/* ===== フィルター全体 ===== */
 #filters {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   margin-bottom: 20px;
 }
 
+/* ===== フィルターグループ ===== */
 .filter-group {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid #e3e6ea;
+  border-radius: 10px;
+  background: #fafbfc;
 }
 
+/* 見出し */
+.filter-group label,
+.filter-group span {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* ===== 入力フォーム ===== */
+input,
+select,
+button {
+  font-size: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* フォーカス時 */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74,144,226,0.2);
+}
+
+/* ボタン */
+button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+/* ===== ギャラリー ===== */
 #gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
 }
 
+/* 画像カード */
 #gallery img {
-  /* オリジナルサイズ表示 */
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: none;
-  max-height: none;
+  border-radius: 10px;
+  background: white;
+  padding: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  object-fit: contain;
+}
+
+/* ===== PC表示 ===== */
+@media (min-width: 768px) {
+  body {
+    padding: 24px;
+    font-size: 17px;
+  }
+
+  #filters {
+    padding: 20px;
+  }
+
+  .filter-group {
+    padding: 16px;
+  }
+}
+
+/* ===== スマホ最適化 ===== */
+@media (max-width: 480px) {
+  body {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  button {
+    padding: 14px;
+  }
 }
