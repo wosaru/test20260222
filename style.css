@@ -41,12 +41,13 @@ body {
 input,
 select,
 button {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
   width: 100%;
   box-sizing: border-box;
+  background-color: #ffffff;
 }
 
 /* フォーカス */
@@ -117,6 +118,7 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
 
