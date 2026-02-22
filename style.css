@@ -41,7 +41,7 @@ body {
 input,
 select,
 button {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #999;
@@ -118,6 +118,7 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
 
