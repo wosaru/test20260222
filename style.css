@@ -15,10 +15,12 @@ body {
   max-width: 920px;          /* 最大横幅960px */
   width: 100%;               /* ウィンドウが狭い時は100%に対応 */
   background: #e6e7ed;
-  padding: 8px;
+  padding: 8px 8px 4px 8px;
   border: 1px solid #999;
   border-radius: 8px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  margin-bottom: 0; 
 }
 
 /* 条件グループ */
@@ -121,6 +123,7 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
 
