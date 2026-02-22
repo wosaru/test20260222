@@ -35,9 +35,11 @@ body {
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 4px;
-  background-color: #d8f0ff;  /* 薄い水色 */
-  padding: 4px 8px;           /* ラベル内に余白 */
-  border-radius: 6px;         /* 角丸で柔らかい印象 */
+  background-color: #d8f0ff;   /* 薄水色 */
+  padding: 6px 10px;           /* ボックス全体に余白 */
+  border-radius: 6px;          /* 角丸 */
+  width: 100%;                 /* 横幅いっぱいに広げる */
+  box-sizing: border-box;      /* padding含めて幅制御 */
 }
 
 /* ===== 入力フォーム（小さめ） ===== */
@@ -120,5 +122,6 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
