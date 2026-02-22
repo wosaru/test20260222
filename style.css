@@ -12,7 +12,7 @@ body {
 
 /* ===== フィルター全体（コンパクト化） ===== */
 #filters {
-  background: #eaf8ff;
+  background: #36a7e3;
   padding: 12px;
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.08);
@@ -41,7 +41,7 @@ body {
 input,
 select,
 button {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #999;
@@ -118,6 +118,7 @@ button:hover {
     font-size: 16px; /* iOSズーム防止 */
   }
 }
+
 
 
 
