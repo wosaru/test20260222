@@ -13,16 +13,13 @@ const data = [
 { "src": "4_あべし_設定1相当_天井狙い_非リセット時_不問_高確_2000~2299.png","ハマり表記":"あべし","設定":"設定1相当","狙い目":"天井狙い","リセットの有無":"非リセット時","モード":"不問","内部状態":"高確","差枚数":"2000~2299" },
 
 
-
-
-
-
 ];
 
+
 /*
-  ==============================
-  初期化
-  ==============================
+==============================
+初期化
+==============================
 */
 
 const filtersDiv = document.getElementById("filters");
@@ -34,7 +31,37 @@ const conditionKeys = Object.keys(data[0]).filter(key => key !== "src");
 // select要素保持
 const selects = {};
 
-// 条件UI生成
+
+/*
+==============================
+お気に入りUI生成
+==============================
+*/
+
+const favoriteBox = document.createElement("div");
+favoriteBox.id = "favoriteBox";
+
+favoriteBox.innerHTML = `
+  <input id="favName" placeholder="お気に入り名">
+  <button id="saveFav">保存</button>
+
+  <select id="favList">
+    <option value="">お気に入り選択</option>
+  </select>
+
+  <button id="loadFav">読込</button>
+  <button id="deleteFav">削除</button>
+`;
+
+filtersDiv.appendChild(favoriteBox);
+
+
+/*
+==============================
+条件UI生成
+==============================
+*/
+
 conditionKeys.forEach(key => {
   const group = document.createElement("div");
   group.className = "filter-group";
@@ -44,7 +71,6 @@ conditionKeys.forEach(key => {
 
   const select = document.createElement("select");
 
-  // ユニーク値のみ追加（「すべて」は作らない）
   const values = [...new Set(data.map(item => item[key]))];
 
   values.forEach(value => {
@@ -63,13 +89,96 @@ conditionKeys.forEach(key => {
   selects[key] = select;
 });
 
-// 初期表示
-update();
 
 /*
-  ==============================
-  検索＆描画
-  ==============================
+==============================
+お気に入り機能
+==============================
+*/
+
+const STORAGE_KEY = "imageFilterFavorites";
+
+function getFavorites() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+}
+
+function saveFavorites(obj) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+}
+
+function refreshFavoriteList() {
+  const favList = document.getElementById("favList");
+  const favorites = getFavorites();
+
+  favList.innerHTML =
+    '<option value="">お気に入り選択</option>';
+
+  Object.keys(favorites).forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    favList.appendChild(option);
+  });
+}
+
+// 保存
+document.getElementById("saveFav").onclick = () => {
+  const name = document.getElementById("favName").value.trim();
+  if (!name) {
+    alert("名前を入力してください");
+    return;
+  }
+
+  const favorites = getFavorites();
+
+  const state = {};
+  conditionKeys.forEach(key => {
+    state[key] = selects[key].value;
+  });
+
+  favorites[name] = state;
+  saveFavorites(favorites);
+  refreshFavoriteList();
+
+  alert("保存しました");
+};
+
+// 読込
+document.getElementById("loadFav").onclick = () => {
+  const name = document.getElementById("favList").value;
+  if (!name) return;
+
+  const favorites = getFavorites();
+  const state = favorites[name];
+
+  conditionKeys.forEach(key => {
+    if (state[key]) {
+      selects[key].value = state[key];
+    }
+  });
+
+  update();
+};
+
+// 削除
+document.getElementById("deleteFav").onclick = () => {
+  const name = document.getElementById("favList").value;
+  if (!name) return;
+
+  if (!confirm("削除しますか？")) return;
+
+  const favorites = getFavorites();
+  delete favorites[name];
+
+  saveFavorites(favorites);
+  refreshFavoriteList();
+};
+
+
+/*
+==============================
+検索＆描画
+==============================
 */
 
 function update() {
@@ -81,102 +190,20 @@ function update() {
     });
   });
 
-  // 一致した画像のみ表示（0件なら何も表示しない）
   filtered.forEach(item => {
     const img = document.createElement("img");
     img.src = `images/${item.src}`;
     img.alt = item.src;
     galleryDiv.appendChild(img);
   });
-
 }
 
 
 /*
 ==============================
-お気に入り機能
+初期表示
 ==============================
 */
 
-const favNameInput = document.getElementById("favName");
-const favList = document.getElementById("favList");
-const saveFavBtn = document.getElementById("saveFav");
-const loadFavBtn = document.getElementById("loadFav");
-
-const STORAGE_KEY = "imageFilterFavorites";
-
-
-// 保存データ取得
-function getFavorites() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-}
-
-// 保存
-function saveFavorites(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-// セレクト更新
-function refreshFavList() {
-  const favs = getFavorites();
-
-  favList.innerHTML = `<option value="">お気に入り選択</option>`;
-
-  Object.keys(favs).forEach(name => {
-    const opt = document.createElement("option");
-    opt.value = name;
-    opt.textContent = name;
-    favList.appendChild(opt);
-  });
-}
-
-
-// 現在条件取得
-function getCurrentConditions() {
-  const conditions = {};
-  conditionKeys.forEach(key => {
-    conditions[key] = selects[key].value;
-  });
-  return conditions;
-}
-
-
-// 条件適用
-function applyConditions(conditions) {
-  conditionKeys.forEach(key => {
-    if (conditions[key]) {
-      selects[key].value = conditions[key];
-    }
-  });
-  update();
-}
-
-
-// 保存ボタン
-saveFavBtn.addEventListener("click", () => {
-  const name = favNameInput.value.trim();
-  if (!name) return alert("名前を入力してください");
-
-  const favs = getFavorites();
-  favs[name] = getCurrentConditions();
-
-  saveFavorites(favs);
-  refreshFavList();
-
-  favNameInput.value = "";
-});
-
-
-// 読込ボタン
-loadFavBtn.addEventListener("click", () => {
-  const name = favList.value;
-  if (!name) return;
-
-  const favs = getFavorites();
-  applyConditions(favs[name]);
-});
-
-
-// 初期ロード時
-refreshFavList();
-
+refreshFavoriteList();
+update();
