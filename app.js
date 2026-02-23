@@ -92,4 +92,91 @@ function update() {
 }
 
 
+/*
+==============================
+お気に入り機能
+==============================
+*/
+
+const favNameInput = document.getElementById("favName");
+const favList = document.getElementById("favList");
+const saveFavBtn = document.getElementById("saveFav");
+const loadFavBtn = document.getElementById("loadFav");
+
+const STORAGE_KEY = "imageFilterFavorites";
+
+
+// 保存データ取得
+function getFavorites() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+}
+
+// 保存
+function saveFavorites(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+// セレクト更新
+function refreshFavList() {
+  const favs = getFavorites();
+
+  favList.innerHTML = `<option value="">お気に入り選択</option>`;
+
+  Object.keys(favs).forEach(name => {
+    const opt = document.createElement("option");
+    opt.value = name;
+    opt.textContent = name;
+    favList.appendChild(opt);
+  });
+}
+
+
+// 現在条件取得
+function getCurrentConditions() {
+  const conditions = {};
+  conditionKeys.forEach(key => {
+    conditions[key] = selects[key].value;
+  });
+  return conditions;
+}
+
+
+// 条件適用
+function applyConditions(conditions) {
+  conditionKeys.forEach(key => {
+    if (conditions[key]) {
+      selects[key].value = conditions[key];
+    }
+  });
+  update();
+}
+
+
+// 保存ボタン
+saveFavBtn.addEventListener("click", () => {
+  const name = favNameInput.value.trim();
+  if (!name) return alert("名前を入力してください");
+
+  const favs = getFavorites();
+  favs[name] = getCurrentConditions();
+
+  saveFavorites(favs);
+  refreshFavList();
+
+  favNameInput.value = "";
+});
+
+
+// 読込ボタン
+loadFavBtn.addEventListener("click", () => {
+  const name = favList.value;
+  if (!name) return;
+
+  const favs = getFavorites();
+  applyConditions(favs[name]);
+});
+
+
+// 初期ロード時
+refreshFavList();
 
